@@ -50,6 +50,7 @@
   .tag.creative { background: rgba(245,166,35,0.15); color: var(--warn); }
   .tag.music { background: rgba(255,120,180,0.15); color: #ff78b4; }
   .tag.cloud { background: rgba(120,200,255,0.15); color: #78c8ff; }
+  .tag.india { background: rgba(255,153,51,0.18); color: #ff9f45; }
   .tag.hot { background: rgba(255,92,122,0.18); color: var(--hot); }
   .offer-line { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 8px; }
   .card p.desc { color: var(--muted); font-size: 13.5px; flex-grow: 1; }
@@ -68,7 +69,7 @@
 <body>
 <header>
   <h1>🔥 Real Offers Hub</h1>
-  <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways and student deals. Not generic "free tiers", but real limited-time offers with terms.</p>
+  <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways, 🇮🇳 Indian SIM/telecom AI bundles (like Jio × Gemini) and student deals. Not generic "free tiers", but real limited-time offers with terms.</p>
   <div class="disclaimer">⚠️ Offers change fast and often have deadlines. Details are ~80% accurate as of <b>Aug 2026</b> — always confirm on the official site before signing up.</div>
 </header>
 
@@ -82,6 +83,7 @@
     <button class="filter-btn" data-cat="games">🎮 Games</button>
     <button class="filter-btn" data-cat="music">🎵 Music & Media</button>
     <button class="filter-btn" data-cat="cloud">☁️ Cloud & Hosting</button>
+    <button class="filter-btn" data-cat="india">🇮🇳 India SIM Offers</button>
   </div>
 </div>
 
@@ -91,7 +93,7 @@
 </main>
 
 <footer>
-  Compiled from public announcements: kiro.dev, blog.google, engadget.com, github.com/education, jetbrains.com/student, figma.com/education, canva.com/education, store.epicgames.com, perplexity.ai &amp; felloai.com.<br/>
+  Compiled from public announcements: kiro.dev, blog.google, github.com/education, jetbrains.com, figma.com, canva.com, store.epicgames.com, perplexity.ai, jio.com, airtel.in, myvi.in, spotify.com, apple.com &amp; azure.microsoft.com.<br/>
   Not affiliated with any listed company. Verify every offer &amp; its deadline independently before signing up.
 </footer>
 
@@ -269,7 +271,51 @@ const DATA = [
     desc: "Via the GitHub Student Developer Pack: a free .me domain registration for one year plus a one-year SSL certificate.",
     who: "Verified students (GitHub Student Pack)",
     exp: "1-year term per redemption",
-    url: "https://nc.me/" }
+    url: "https://nc.me/" },
+
+  // ===== 🇮🇳 INDIA SIM / TELECOM OFFERS =====
+  { name: "Jio × Google Gemini", cat: "india", hot: true,
+    offer: "🤖 Google AI Pro FREE for 18 months (₹35,100 value)",
+    desc: "Jio users on an active Unlimited 5G plan of ₹349+ get an 18-month Google AI Pro subscription free — includes the latest Gemini model, expanded NotebookLM and 2TB cloud storage. Activate via the MyJio app.",
+    who: "Jio Unlimited 5G users (₹349+ plan), 18+",
+    exp: "Rolling out (started 18–25 age group first)",
+    url: "https://www.jio.com/google-gemini-offer/" },
+  { name: "Airtel × Perplexity", cat: "india", hot: true,
+    offer: "🤖 Perplexity Pro FREE for 12 months (₹17,000 value)",
+    desc: "Airtel's landmark AI offer gave all customers a free 1-year Perplexity Pro subscription. NOTE: the original free promo ended Jan 16, 2026 — check the Airtel/Perplexity page for current availability before relying on it.",
+    who: "Airtel prepaid/postpaid/broadband/DTH customers",
+    exp: "⚠️ Original promo ended Jan 16, 2026 — verify current status",
+    url: "https://www.airtel.in/perplexity-pro/" },
+  { name: "Jio New Year Plan (₹500)", cat: "india",
+    offer: "📺 Unlimited 5G + Gemini Pro + 13 OTT apps",
+    desc: "A recent Jio recharge bundled unlimited 5G data, Gemini Pro access and 13 OTT apps — YouTube Premium, Prime Video Mobile, JioHotstar, SonyLIV, ZEE5, Lionsgate Play and more, in a single recharge.",
+    who: "Jio prepaid users",
+    exp: "Promotional recharge (check current price/validity)",
+    url: "https://www.jio.com/ott/" },
+  { name: "Jio OTT Pass (₹200)", cat: "india",
+    offer: "📺 15 streaming apps + 30GB + 1000+ live TV",
+    desc: "A 28-day bundle with 30GB data, 1000+ live TV channels and complimentary access to ~15 OTT apps including YouTube Premium, Prime Video Mobile and JioHotstar.",
+    who: "Jio prepaid users",
+    exp: "28-day validity per recharge",
+    url: "https://www.jio.com/ott/" },
+  { name: "Vi ₹200 OTT Pack", cat: "india",
+    offer: "📺 20 OTT apps + unlimited 5G + 200 live channels",
+    desc: "A 28-day Vi Movies & TV pack giving access to 20 OTT platforms (JioHotstar, SonyLIV, ZEE5, Lionsgate Play, FanCode and more), 30GB high-speed data, 200+ live channels and unlimited 5G in covered areas.",
+    who: "Vi prepaid users (5G in supported areas)",
+    exp: "28-day validity per recharge",
+    url: "https://www.myvi.in/prepaid/online-mobile-recharge" },
+  { name: "Vi × Spotify", cat: "india",
+    offer: "🎵 Spotify Premium FREE with recharge (from ₹230)",
+    desc: "Select Vi prepaid recharge plans (starting around ₹230) bundle Spotify Premium at no extra cost, along with data, unlimited calls and — on some plans — OTT access.",
+    who: "Vi prepaid users on eligible plans",
+    exp: "Ongoing (plan-dependent)",
+    url: "https://www.myvi.in/prepaid/online-mobile-recharge" },
+  { name: "Vi Edu+ (PhysicsWallah)", cat: "india",
+    offer: "📚 Free PhysicsWallah courses with recharge",
+    desc: "Vi's Edu+ prepaid plan bundles PhysicsWallah's 'Pi' OTT learning platform (JEE/NEET prep) into a standard recharge — no separate payment for the coursework.",
+    who: "Vi prepaid users (students / JEE-NEET aspirants)",
+    exp: "Ongoing (plan-dependent)",
+    url: "https://www.myvi.in/prepaid/online-mobile-recharge" }
 ];
 
 const grid = document.getElementById('grid');
@@ -284,7 +330,7 @@ function render() {
     const hay = (d.name + ' ' + d.desc + ' ' + d.offer + ' ' + d.who + ' ' + d.exp).toLowerCase();
     return matchCat && (!q || hay.includes(q));
   });
-  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud' };
+  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud', india: '🇮🇳 India SIM' };
 
   grid.innerHTML = items.length ? items.map(d => `
     <div class="card">
