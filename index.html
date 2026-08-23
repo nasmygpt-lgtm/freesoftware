@@ -81,7 +81,7 @@
 <body>
 <header>
   <h1>🔥 Real Offers Hub</h1>
-  <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways, 🇮🇳 Indian SIM/telecom AI bundles (like Jio × Gemini) and student deals. Not generic "free tiers", but real limited-time offers with terms.</p>
+  <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways, 🇮🇳 Indian SIM/telecom AI bundles (like Jio × Gemini), 🌐 cheap .COM/.IN domain deals and student offers. Not generic "free tiers", but real limited-time offers with terms.</p>
   <div class="disclaimer">⚠️ Offers change fast and often have deadlines. Watch for <b>⏳ Expiring soon</b> and <b>⛔ Likely ended</b> badges. Details are ~80% accurate as of <b>Aug 2026</b> — always confirm on the official site before signing up.</div>
 </header>
 
@@ -341,12 +341,18 @@ const DATA = [
     who: "New customers (1 domain per household)",
     exp: "Ongoing promo (first-year only)",
     url: "https://www.namecheap.com/domains/domain-pricing.aspx" },
-  { name: "GoDaddy .COM", cat: "domains", region: "global",
-    offer: "🌐 .COM as low as ~$0.01–$1 first year",
-    desc: "GoDaddy runs aggressive first-year .com deals (sometimes a penny). ⚠️ Big catch: renewals jump to ~$22.99/yr — over 5 years it's far pricier than flat-rate registrars. Great for a cheap first year only.",
-    who: "New customers",
+  { name: "GoDaddy .COM (Global)", cat: "domains", hot: true, region: "us",
+    offer: "🌐 .COM for $0.99 first year (99-cent deal)",
+    desc: "GoDaddy's classic 99-cent coupon: a brand-new .com for $0.99 (about $1.17 with the ICANN fee) for new customers. Penny (~$0.01) deals also appear on 3-year terms. ⚠️ Renews at ~$22–24/yr — great for year one only.",
+    who: "New customers (one per order)",
     exp: "Ongoing promo (first-year only)",
-    url: "https://www.godaddy.com/domains" },
+    url: "https://www.godaddy.com/domains/cheap-domain-names" },
+  { name: "GoDaddy Hosting (Global)", cat: "domains", region: "us",
+    offer: "💻 Economy hosting from $2.99/mo + 50% off",
+    desc: "GoDaddy promo stack: 50% off annual hosting, Economy shared hosting from ~$2.99/mo, VPS from ~$8.99/mo, and a free domain with annual hosting/WordPress plans. New-purchase codes, one per order.",
+    who: "New customers",
+    exp: "Ongoing promo (renews higher)",
+    url: "https://www.godaddy.com/promos/hot-deals" },
   { name: "Porkbun .COM", cat: "domains", hot: true, region: "global",
     offer: "🌐 .COM ~$11 — same low price on renewal",
     desc: "No bait-and-switch: registration and renewal are both around $11, with free WHOIS privacy and SSL. Cheaper long-term than penny-first-year hosts (roughly $55 vs $92 over 5 years for the same domain).",
@@ -382,7 +388,39 @@ const DATA = [
     desc: "Via the GitHub Student Developer Pack, students get a free .me domain registration and SSL certificate for a year — genuinely $0, not just a discount.",
     who: "Verified students (GitHub Student Pack)",
     exp: "1-year free term per redemption",
-    url: "https://nc.me/" }
+    url: "https://nc.me/" },
+
+  // ===== 🌐🇮🇳 DOMAINS & HOSTING — INDIA =====
+  { name: "GoDaddy India .COM", cat: "domains", hot: true, region: "in",
+    offer: "🌐 .COM for ₹1 first year (₹599 also common)",
+    desc: "GoDaddy India's headline deal drops a first-year .com to just ₹1 for new customers (a ₹599 first-year rate is the more widely available version). ⚠️ Renewal is ~₹1,599/yr and the ₹1 deal often needs a 3-year term.",
+    who: "New GoDaddy India customers",
+    exp: "Ongoing promo (first-year only)",
+    url: "https://www.godaddy.com/en-in/domains/free-domain" },
+  { name: "GoDaddy India .IN", cat: "domains", region: "in",
+    offer: "🌐 .IN for ₹1 first year (from ₹899)",
+    desc: "The .in TLD (great for Indian sites) starts at ₹1 for the first year on a 3-year purchase, versus a ₹899 list price. Ideal for grabbing an Indian domain cheaply to start.",
+    who: "New GoDaddy India customers (3-yr term)",
+    exp: "Ongoing promo (first-year only)",
+    url: "https://www.godaddy.com/en-in/tlds/in-domain" },
+  { name: "Hostinger India Hosting", cat: "domains", hot: true, region: "in",
+    offer: "💻 Hosting from ₹149/mo + FREE domain (yr 1)",
+    desc: "Top budget pick in India: Premium plan around ₹149/mo (with coupon, long term) gets unlimited websites, 100GB SSD, free SSL and a free domain for year one, with a Mumbai data centre. ⚠️ Renews around ₹289/mo.",
+    who: "Anyone in India (long-term plan for best rate)",
+    exp: "Intro pricing (renews higher)",
+    url: "https://www.hostinger.in/web-hosting" },
+  { name: "Hostinger India .IN Domain", cat: "domains", region: "in",
+    offer: "🌐 .IN up to 73% off (free with hosting)",
+    desc: "Register a .in domain at up to 73% off, or get it bundled free for the first year when paired with a 12-month premium hosting plan.",
+    who: "Anyone in India",
+    exp: "Ongoing promo",
+    url: "https://www.hostinger.com/in/tld/in-domain" },
+  { name: "BigRock (India)", cat: "domains", region: "in",
+    offer: "💻 Discounted hosting + .IN domain deals",
+    desc: "India-focused registrar/host with strong .in domain deals and local support. Shared hosting starts low with 20GB NVMe SSD and 10 email accounts (renews around ₹409/mo). Best for users who want India-based support.",
+    who: "Anyone in India",
+    exp: "Intro pricing (renews higher)",
+    url: "https://www.bigrock.in/web-hosting" }
 ];
 
 const grid = document.getElementById('grid');
