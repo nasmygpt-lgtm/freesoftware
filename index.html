@@ -52,6 +52,17 @@
   .tag.cloud { background: rgba(120,200,255,0.15); color: #78c8ff; }
   .tag.india { background: rgba(255,153,51,0.18); color: #ff9f45; }
   .tag.hot { background: rgba(255,92,122,0.18); color: var(--hot); }
+  .tag.region { background: rgba(148,162,192,0.15); color: var(--muted); }
+  .tag.soon { background: rgba(245,166,35,0.2); color: var(--warn); border: 1px solid rgba(245,166,35,0.5); }
+  .tag.ended { background: rgba(120,130,150,0.15); color: #8792a8; }
+  .toggles { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+  .toggle-btn { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--pill);
+    color: var(--muted); font-size: 13px; cursor: pointer; transition: .15s; display: inline-flex; align-items: center; gap: 6px; }
+  .toggle-btn:hover { color: var(--text); border-color: var(--hot); }
+  .toggle-btn.active { background: var(--hot); color: #fff; border-color: var(--hot); }
+  select#region { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--pill); color: var(--text); font-size: 13px; cursor: pointer; outline: none; }
+  select#region:focus { border-color: var(--accent); }
   .offer-line { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 8px; }
   .card p.desc { color: var(--muted); font-size: 13.5px; flex-grow: 1; }
   .meta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
@@ -70,7 +81,7 @@
 <header>
   <h1>🔥 Real Offers Hub</h1>
   <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways, 🇮🇳 Indian SIM/telecom AI bundles (like Jio × Gemini) and student deals. Not generic "free tiers", but real limited-time offers with terms.</p>
-  <div class="disclaimer">⚠️ Offers change fast and often have deadlines. Details are ~80% accurate as of <b>Aug 2026</b> — always confirm on the official site before signing up.</div>
+  <div class="disclaimer">⚠️ Offers change fast and often have deadlines. Watch for <b>⏳ Expiring soon</b> and <b>⛔ Likely ended</b> badges. Details are ~80% accurate as of <b>Aug 2026</b> — always confirm on the official site before signing up.</div>
 </header>
 
 <div class="controls">
@@ -84,6 +95,16 @@
     <button class="filter-btn" data-cat="music">🎵 Music & Media</button>
     <button class="filter-btn" data-cat="cloud">☁️ Cloud & Hosting</button>
     <button class="filter-btn" data-cat="india">🇮🇳 India SIM Offers</button>
+  </div>
+  <div class="toggles">
+    <button class="toggle-btn" id="hotToggle">🔥 Hot deals only</button>
+    <label for="region" style="color:var(--muted);font-size:13px;">🌍 Region:</label>
+    <select id="region">
+      <option value="all">All regions</option>
+      <option value="global">🌍 Global</option>
+      <option value="in">🇮🇳 India</option>
+      <option value="us">🇺🇸 US</option>
+    </select>
   </div>
 </div>
 
@@ -100,25 +121,25 @@
 <script>
 const DATA = [
   // ===== AI PROMOTIONS =====
-  { name: "Kiro (by AWS)", cat: "ai", hot: true,
+  { name: "Kiro (by AWS)", cat: "ai", hot: true, region: "global",
     offer: "🎓 Kiro Pro FREE for 1 year",
     desc: "Students who verify their status can use Kiro Pro at no cost for a full year — exactly the kind of 'real offer' promo, straight from the developer.",
     who: "Verified students (via SheerID)",
     exp: "Started Mar 16, 2026 — until discontinued",
     url: "https://kiro.dev/students/" },
-  { name: "Kiro (by AWS)", cat: "ai",
+  { name: "Kiro (by AWS)", cat: "ai", region: "global",
     offer: "🎁 $20 sign-up bonus + 100+100 welcome requests",
     desc: "First-time upgraders to any paid Kiro plan (via social login / Builder ID) get a $20 bonus; all users get 100 Spec + 100 Vibe requests in their first 14 days.",
     who: "New paid upgraders / all new users",
     exp: "Welcome bonus: first 14 days of usage",
     url: "https://kiro.dev/blog/new-paid-tier-bonus/" },
-  { name: "Google AI Pro", cat: "ai", hot: true,
+  { name: "Google AI Pro", cat: "ai", hot: true, region: "us", expiry: "2026-12-31",
     offer: "🎓 12 months FREE ($200 value)",
     desc: "US college students get a full year of Google AI Pro (Gemini) at no cost — 4× Gemini limits, 5TB storage, study tools. Students in 140+ other markets get AI Plus free.",
     who: "Verified US college students (SheerID)",
     exp: "Relaunched Aug 19 — redeem by Dec 31, 2026",
     url: "https://gemini.google.com/students" },
-  { name: "Perplexity Pro", cat: "ai",
+  { name: "Perplexity Pro", cat: "ai", region: "global",
     offer: "🎓 1 month of Pro FREE",
     desc: "Verified students & educators get one free month of Perplexity Pro (Education Pro) before the discounted $10/mo billing begins. Note: the old 24-month referral stack ended May 31, 2026.",
     who: "Verified students / educators (SheerID)",
@@ -126,19 +147,19 @@ const DATA = [
     url: "https://www.perplexity.ai/backtoschool" },
 
   // ===== DEV TOOLS =====
-  { name: "GitHub Copilot", cat: "dev", hot: true,
+  { name: "GitHub Copilot", cat: "dev", hot: true, region: "global",
     offer: "🎓 Copilot Pro FREE (unlimited)",
     desc: "Verified students, teachers and open-source maintainers get GitHub Copilot Pro free — unlimited completions and additional models at no cost, right in your editor.",
     who: "Students, teachers, OSS maintainers",
     exp: "Ongoing (Copilot Student plan, Mar 2026)",
     url: "https://github.com/education/students" },
-  { name: "GitHub Student Developer Pack", cat: "dev", hot: true,
+  { name: "GitHub Student Developer Pack", cat: "dev", hot: true, region: "global",
     offer: "🎁 100+ tools & credits bundled FREE",
     desc: "One verification unlocks dozens of partner offers — free domains, cloud credits, developer tools and courses — all bundled for students.",
     who: "Verified students",
     exp: "Ongoing",
     url: "https://education.github.com/pack" },
-  { name: "JetBrains", cat: "dev",
+  { name: "JetBrains", cat: "dev", region: "global",
     offer: "🎓 Full IDE suite FREE for students",
     desc: "Free student subscription to all JetBrains IDEs (IntelliJ IDEA Ultimate, PyCharm Pro, WebStorm, etc.). Application is fully automated.",
     who: "Verified students & teachers",
@@ -146,19 +167,19 @@ const DATA = [
     url: "https://jetbrains.com/student" },
 
   // ===== CREATIVE =====
-  { name: "Figma for Education", cat: "creative",
+  { name: "Figma for Education", cat: "creative", region: "global",
     offer: "🎓 Figma Professional/Enterprise FREE",
     desc: "Students & educators get free access to Figma & FigJam — higher-ed and bootcamp users get the Professional plan; K-12 gets Enterprise through their school.",
     who: "Verified students & educators",
     exp: "Ongoing",
     url: "https://www.figma.com/education/" },
-  { name: "Canva for Education", cat: "creative",
+  { name: "Canva for Education", cat: "creative", region: "global",
     offer: "🏫 Canva Education 100% FREE",
     desc: "Completely free for K-12 teachers, their students and staff — premium templates, collaboration and design tools at no cost.",
     who: "K-12 teachers, students & institutions",
     exp: "Ongoing",
     url: "https://www.canva.com/education/" },
-  { name: "Adobe Creative Cloud", cat: "creative",
+  { name: "Adobe Creative Cloud", cat: "creative", region: "global",
     offer: "⏳ 7-day free trial (20+ apps)",
     desc: "Try Photoshop, Illustrator, Premiere, Acrobat + Firefly AI free for 7 days. Plus a common extra 14-day cancellation window for a full refund.",
     who: "Anyone (new subscribers)",
@@ -166,13 +187,13 @@ const DATA = [
     url: "https://www.adobe.com/creativecloud/free-trial-download.html" },
 
   // ===== GAMES =====
-  { name: "Epic Games Store", cat: "games", hot: true,
+  { name: "Epic Games Store", cat: "games", hot: true, region: "global",
     offer: "🎮 A FREE PC game EVERY week",
     desc: "Epic gives away at least one full PC game free every Thursday (8 AM PT) — yours to keep forever. Aug 2026 freebies alone totaled over $215 in value.",
     who: "Anyone with a free Epic account",
     exp: "New games drop weekly (Thursdays)",
     url: "https://store.epicgames.com/free-games" },
-  { name: "Amazon Prime Gaming", cat: "games",
+  { name: "Amazon Prime Gaming", cat: "games", region: "global",
     offer: "🎮 Free games & in-game loot monthly",
     desc: "Prime members get a rotating set of free games and in-game content each month as part of Prime Gaming.",
     who: "Amazon Prime members",
@@ -180,13 +201,13 @@ const DATA = [
     url: "https://gaming.amazon.com/" },
 
   // ===== GIVEAWAY / GENERAL SOURCES (keep-an-eye-on) =====
-  { name: "Giveaway of the Day", cat: "creative",
+  { name: "Giveaway of the Day", cat: "creative", region: "global",
     offer: "🎁 A paid app FREE every single day",
     desc: "A different premium Windows/Mac app is given away free each day — the license is valid only for the day it's featured, so check daily.",
     who: "Anyone",
     exp: "New giveaway every 24 hours",
     url: "https://www.giveawayoftheday.com/" },
-  { name: "GetStudentPerks", cat: "dev",
+  { name: "GetStudentPerks", cat: "dev", region: "global",
     offer: "🎓 Hundreds of verified student deals",
     desc: "A directory of hundreds of verified free plans and student discounts you can claim with a school email — handy hub to find more offers like these.",
     who: "Students (school email)",
@@ -194,51 +215,45 @@ const DATA = [
     url: "https://getstudentperks.com/" },
 
   // ===== MUSIC & MEDIA =====
-  { name: "Spotify Premium", cat: "music", hot: true,
+  { name: "Spotify Premium", cat: "music", hot: true, region: "us", expiry: "2026-09-23",
     offer: "🎵 3 months FREE, then paid",
     desc: "New-to-Premium users get Spotify Premium free for 3 months before regular billing kicks in. Ad-free music, offline downloads. Students also get a separate discounted plan.",
     who: "Users who've never tried Premium",
     exp: "Offer ends Sep 23, 2026 (US)",
     url: "https://www.spotify.com/premium/" },
-  { name: "Spotify + Microsoft Rewards", cat: "music",
+  { name: "Spotify + Microsoft Rewards", cat: "music", region: "us", expiry: "2028-01-21",
     offer: "🎵 Up to 3 months Premium free",
     desc: "Redeem Microsoft Rewards points for up to 3 months of Spotify Premium (3-mo for new users; 2-mo for returning users who qualify).",
     who: "Microsoft Rewards members",
     exp: "Offer runs through Jan 21, 2028",
     url: "https://www.microsoft.com/en-us/rewards/spotify-premium-offer" },
-  { name: "Apple Music", cat: "music", hot: true,
+  { name: "Apple Music", cat: "music", hot: true, region: "global",
     offer: "🎵 Up to 3 months FREE",
     desc: "New subscribers get 1 month free; buyers of a new iPhone, iPad, Mac or AirPods get up to 3 months free (redeem within 90 days of device activation).",
     who: "New subscribers / new Apple device owners",
     exp: "90 days after device activation",
     url: "https://www.apple.com/apple-music/" },
-  { name: "Apple Music (Students)", cat: "music",
+  { name: "Apple Music (Students)", cat: "music", region: "global",
     offer: "🎓 1 month free + Apple TV included",
     desc: "Students get 1 month of Apple Music free, then a discounted $5.99/mo student rate — with bonus access to Apple TV content for a limited time.",
     who: "Verified higher-ed students",
     exp: "Ongoing (limited-time Apple TV bonus)",
     url: "https://music.apple.com/student" },
-  { name: "YouTube Premium", cat: "music",
+  { name: "YouTube Premium", cat: "music", region: "global",
     offer: "⏳ 1 month free trial",
     desc: "Ad-free YouTube, background play, downloads and YouTube Music — free for the first month. Students get a discounted rate after verifying.",
     who: "New users (student discount available)",
     exp: "Ongoing trial",
     url: "https://www.youtube.com/premium" },
-  { name: "Amazon Prime Gaming", cat: "games",
-    offer: "🎮 Free games & in-game loot monthly",
-    desc: "Prime members get a rotating set of free games and in-game content every month via Prime Gaming.",
-    who: "Amazon Prime members",
-    exp: "Refreshes monthly",
-    url: "https://gaming.amazon.com/" },
 
   // ===== PRODUCTIVITY (student/education) =====
-  { name: "Notion Education Plus", cat: "dev", hot: true,
+  { name: "Notion Education Plus", cat: "dev", hot: true, region: "global",
     offer: "🎓 Notion Plus plan FREE",
     desc: "Students & educators with a verified school email upgrade to the Plus plan for free — unlimited file uploads, 30-day version history and unlimited guest sharing.",
     who: "Verified students & educators (school email)",
     exp: "Ongoing (single-member workspace)",
     url: "https://www.notion.com/product/notion-for-education" },
-  { name: "Microsoft 365 Education", cat: "creative",
+  { name: "Microsoft 365 Education", cat: "creative", region: "global",
     offer: "🎓 Office 365 A1 completely FREE",
     desc: "Students, educators and staff at accredited institutions get free web versions of Word, Excel, PowerPoint, OneNote & Teams, plus 1 TB of OneDrive storage.",
     who: "Accredited-institution students & staff",
@@ -246,13 +261,13 @@ const DATA = [
     url: "https://www.microsoft.com/en-us/education/products/office" },
 
   // ===== VPN =====
-  { name: "Surfshark VPN", cat: "cloud",
+  { name: "Surfshark VPN", cat: "cloud", region: "global",
     offer: "🔒 Up to 86% off + 3 extra months free",
     desc: "Longer plans include several extra months free (a recent promo also bundled a year of the Calm app). Backed by a 30-day money-back guarantee, plus a 7-day free trial on mobile/Windows.",
     who: "Anyone (student rate also available)",
     exp: "August 2026 promo",
     url: "https://surfshark.com/deal/coupon" },
-  { name: "NordVPN", cat: "cloud",
+  { name: "NordVPN", cat: "cloud", region: "global",
     offer: "🔒 Up to 74% off + 3 months free",
     desc: "2-year plans come with a big discount plus 3 extra months free; new users can also try a 30-day money-back period. Extra 15% for students & youth.",
     who: "Anyone (extra 15% for students)",
@@ -260,13 +275,13 @@ const DATA = [
     url: "https://nordvpn.com/" },
 
   // ===== CLOUD & HOSTING (student credits) =====
-  { name: "Azure for Students", cat: "cloud", hot: true,
+  { name: "Azure for Students", cat: "cloud", hot: true, region: "global",
     offer: "🎓 $100 Azure credit — no card needed",
     desc: "Students get $100 in Azure credit for 12 months plus free services, with no credit card required. Redeemable on its own or via the GitHub Student Pack.",
     who: "Verified students (personal MS account)",
     exp: "Renewable yearly while eligible",
     url: "https://azure.microsoft.com/free/students/" },
-  { name: "Namecheap (Student Pack)", cat: "cloud",
+  { name: "Namecheap (Student Pack)", cat: "cloud", region: "global",
     offer: "🎓 Free .me domain + SSL for 1 year",
     desc: "Via the GitHub Student Developer Pack: a free .me domain registration for one year plus a one-year SSL certificate.",
     who: "Verified students (GitHub Student Pack)",
@@ -274,43 +289,43 @@ const DATA = [
     url: "https://nc.me/" },
 
   // ===== 🇮🇳 INDIA SIM / TELECOM OFFERS =====
-  { name: "Jio × Google Gemini", cat: "india", hot: true,
+  { name: "Jio × Google Gemini", cat: "india", hot: true, region: "in",
     offer: "🤖 Google AI Pro FREE for 18 months (₹35,100 value)",
     desc: "Jio users on an active Unlimited 5G plan of ₹349+ get an 18-month Google AI Pro subscription free — includes the latest Gemini model, expanded NotebookLM and 2TB cloud storage. Activate via the MyJio app.",
     who: "Jio Unlimited 5G users (₹349+ plan), 18+",
     exp: "Rolling out (started 18–25 age group first)",
     url: "https://www.jio.com/google-gemini-offer/" },
-  { name: "Airtel × Perplexity", cat: "india", hot: true,
+  { name: "Airtel × Perplexity", cat: "india", region: "in", ended: true,
     offer: "🤖 Perplexity Pro FREE for 12 months (₹17,000 value)",
     desc: "Airtel's landmark AI offer gave all customers a free 1-year Perplexity Pro subscription. NOTE: the original free promo ended Jan 16, 2026 — check the Airtel/Perplexity page for current availability before relying on it.",
     who: "Airtel prepaid/postpaid/broadband/DTH customers",
     exp: "⚠️ Original promo ended Jan 16, 2026 — verify current status",
     url: "https://www.airtel.in/perplexity-pro/" },
-  { name: "Jio New Year Plan (₹500)", cat: "india",
+  { name: "Jio New Year Plan (₹500)", cat: "india", region: "in",
     offer: "📺 Unlimited 5G + Gemini Pro + 13 OTT apps",
     desc: "A recent Jio recharge bundled unlimited 5G data, Gemini Pro access and 13 OTT apps — YouTube Premium, Prime Video Mobile, JioHotstar, SonyLIV, ZEE5, Lionsgate Play and more, in a single recharge.",
     who: "Jio prepaid users",
     exp: "Promotional recharge (check current price/validity)",
     url: "https://www.jio.com/ott/" },
-  { name: "Jio OTT Pass (₹200)", cat: "india",
+  { name: "Jio OTT Pass (₹200)", cat: "india", region: "in",
     offer: "📺 15 streaming apps + 30GB + 1000+ live TV",
     desc: "A 28-day bundle with 30GB data, 1000+ live TV channels and complimentary access to ~15 OTT apps including YouTube Premium, Prime Video Mobile and JioHotstar.",
     who: "Jio prepaid users",
     exp: "28-day validity per recharge",
     url: "https://www.jio.com/ott/" },
-  { name: "Vi ₹200 OTT Pack", cat: "india",
+  { name: "Vi ₹200 OTT Pack", cat: "india", region: "in",
     offer: "📺 20 OTT apps + unlimited 5G + 200 live channels",
     desc: "A 28-day Vi Movies & TV pack giving access to 20 OTT platforms (JioHotstar, SonyLIV, ZEE5, Lionsgate Play, FanCode and more), 30GB high-speed data, 200+ live channels and unlimited 5G in covered areas.",
     who: "Vi prepaid users (5G in supported areas)",
     exp: "28-day validity per recharge",
     url: "https://www.myvi.in/prepaid/online-mobile-recharge" },
-  { name: "Vi × Spotify", cat: "india",
+  { name: "Vi × Spotify", cat: "india", region: "in",
     offer: "🎵 Spotify Premium FREE with recharge (from ₹230)",
     desc: "Select Vi prepaid recharge plans (starting around ₹230) bundle Spotify Premium at no extra cost, along with data, unlimited calls and — on some plans — OTT access.",
     who: "Vi prepaid users on eligible plans",
     exp: "Ongoing (plan-dependent)",
     url: "https://www.myvi.in/prepaid/online-mobile-recharge" },
-  { name: "Vi Edu+ (PhysicsWallah)", cat: "india",
+  { name: "Vi Edu+ (PhysicsWallah)", cat: "india", region: "in",
     offer: "📚 Free PhysicsWallah courses with recharge",
     desc: "Vi's Edu+ prepaid plan bundles PhysicsWallah's 'Pi' OTT learning platform (JEE/NEET prep) into a standard recharge — no separate payment for the coursework.",
     who: "Vi prepaid users (students / JEE-NEET aspirants)",
@@ -321,25 +336,62 @@ const DATA = [
 const grid = document.getElementById('grid');
 const countEl = document.getElementById('count');
 const searchEl = document.getElementById('search');
+const regionEl = document.getElementById('region');
+const hotToggle = document.getElementById('hotToggle');
 let activeCat = 'all';
+let hotOnly = false;
+
+const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud', india: '🇮🇳 India SIM' };
+const regionLabel = { global: '🌍 Global', in: '🇮🇳 India', us: '🇺🇸 US' };
+
+const NOW = new Date();
+const SOON_DAYS = 45; // "expiring soon" window
+
+// Returns null | { ended: true } | { soon: true, days } based on expiry date
+function expiryStatus(d) {
+  if (d.ended) return { ended: true };
+  if (!d.expiry) return null;
+  const end = new Date(d.expiry + 'T23:59:59');
+  const days = Math.ceil((end - NOW) / 86400000);
+  if (days < 0) return { ended: true };
+  if (days <= SOON_DAYS) return { soon: true, days };
+  return null;
+}
+
+// Sort: hot first, then expiring-soon, then the rest; ended offers sink to the bottom.
+function sortItems(items) {
+  return items.slice().sort((a, b) => {
+    const sa = expiryStatus(a), sb = expiryStatus(b);
+    const rank = (d, s) => (s && s.ended) ? 3 : (d.hot ? 0 : (s && s.soon ? 1 : 2));
+    return rank(a, sa) - rank(b, sb);
+  });
+}
 
 function render() {
   const q = searchEl.value.trim().toLowerCase();
-  const items = DATA.filter(d => {
+  const region = regionEl.value;
+  let items = DATA.filter(d => {
     const matchCat = activeCat === 'all' || d.cat === activeCat;
+    const matchRegion = region === 'all' || d.region === region;
+    const matchHot = !hotOnly || d.hot;
     const hay = (d.name + ' ' + d.desc + ' ' + d.offer + ' ' + d.who + ' ' + d.exp).toLowerCase();
-    return matchCat && (!q || hay.includes(q));
+    return matchCat && matchRegion && matchHot && (!q || hay.includes(q));
   });
-  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud', india: '🇮🇳 India SIM' };
+  items = sortItems(items);
 
-  grid.innerHTML = items.length ? items.map(d => `
+  grid.innerHTML = items.length ? items.map(d => {
+    const s = expiryStatus(d);
+    let statusBadge = '';
+    if (s && s.ended) statusBadge = '<span class="tag ended">⛔ Likely ended</span>';
+    else if (s && s.soon) statusBadge = `<span class="tag soon">⏳ Expiring soon${s.days >= 0 ? ' · ' + s.days + 'd left' : ''}</span>`;
+    return `
     <div class="card">
-      <div class="card-top">
-        <h3>${d.name}</h3>
-      </div>
+      <div class="card-top"><h3>${d.name}</h3></div>
       <div class="badges">
         <span class="tag ${d.cat}">${catLabel[d.cat]}</span>
+        ${d.region ? `<span class="tag region">${regionLabel[d.region] || d.region}</span>` : ''}
         ${d.hot ? '<span class="tag hot">🔥 Hot deal</span>' : ''}
+        ${statusBadge}
       </div>
       <div class="offer-line">${d.offer}</div>
       <p class="desc">${d.desc}</p>
@@ -348,8 +400,8 @@ function render() {
         <div class="exp">⏰ <b>When:</b> ${d.exp}</div>
       </div>
       <a class="visit" href="${d.url}" target="_blank" rel="noopener noreferrer">Claim / Learn More →</a>
-    </div>
-  `).join('') : `<div class="no-results">No offers match. Try another search or filter.</div>`;
+    </div>`;
+  }).join('') : `<div class="no-results">No offers match. Try another search or filter.</div>`;
 
   countEl.textContent = `Showing ${items.length} of ${DATA.length} real offers`;
 }
@@ -361,6 +413,12 @@ document.getElementById('filters').addEventListener('click', e => {
   activeCat = e.target.dataset.cat;
   render();
 });
+hotToggle.addEventListener('click', () => {
+  hotOnly = !hotOnly;
+  hotToggle.classList.toggle('active', hotOnly);
+  render();
+});
+regionEl.addEventListener('change', render);
 searchEl.addEventListener('input', render);
 render();
 </script>
