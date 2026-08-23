@@ -3,96 +3,60 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FreeStuff Finder — Giveaways, Free Trials & AI Tools</title>
+<title>Real Offers Hub — Actual Free Deals & Promotions People Are Giving Right Now</title>
 <style>
   :root {
-    --bg: #0b0f1a;
-    --bg2: #121829;
-    --card: #171f33;
-    --card-hover: #1e2942;
-    --border: #263149;
-    --text: #e8ecf5;
-    --muted: #94a2c0;
-    --accent: #5b8cff;
-    --accent2: #22d3a8;
-    --warn: #f5a623;
-    --pill: #223052;
+    --bg: #0b0f1a; --bg2: #121829; --card: #171f33; --card-hover: #1e2942;
+    --border: #263149; --text: #e8ecf5; --muted: #94a2c0;
+    --accent: #5b8cff; --accent2: #22d3a8; --warn: #f5a623; --hot: #ff5c7a; --pill: #223052;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: radial-gradient(1200px 600px at 80% -10%, #1a2340 0%, var(--bg) 55%) fixed;
-    color: var(--text);
-    line-height: 1.5;
-    min-height: 100vh;
+    color: var(--text); line-height: 1.5; min-height: 100vh;
   }
-  header {
-    padding: 48px 20px 28px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(91,140,255,0.08), transparent);
-  }
-  header h1 {
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  header p { color: var(--muted); margin-top: 10px; font-size: 15px; max-width: 640px; margin-left: auto; margin-right: auto; }
-  .disclaimer {
-    margin: 16px auto 0; max-width: 720px; font-size: 12.5px; color: var(--warn);
-    background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.25);
-    padding: 8px 14px; border-radius: 10px;
-  }
-  .controls {
-    position: sticky; top: 0; z-index: 20;
-    background: rgba(11,15,26,0.85); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; align-items: center;
-  }
-  #search {
-    width: 100%; max-width: 560px; padding: 12px 16px; border-radius: 12px;
-    border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 15px; outline: none;
-  }
+  header { padding: 46px 20px 26px; text-align: center; border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(91,140,255,0.08), transparent); }
+  header h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 800; letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text;
+    background-clip: text; -webkit-text-fill-color: transparent; }
+  header p { color: var(--muted); margin-top: 10px; font-size: 15px; max-width: 660px; margin-inline: auto; }
+  .disclaimer { margin: 16px auto 0; max-width: 740px; font-size: 12.5px; color: var(--warn);
+    background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.25); padding: 8px 14px; border-radius: 10px; }
+  .controls { position: sticky; top: 0; z-index: 20; background: rgba(11,15,26,0.9); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border); padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  #search { width: 100%; max-width: 560px; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--bg2); color: var(--text); font-size: 15px; outline: none; }
   #search:focus { border-color: var(--accent); }
   .filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .filter-btn {
-    padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border);
-    background: var(--pill); color: var(--muted); font-size: 13px; cursor: pointer; transition: .15s;
-  }
+  .filter-btn { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--pill);
+    color: var(--muted); font-size: 13px; cursor: pointer; transition: .15s; }
   .filter-btn:hover { color: var(--text); border-color: var(--accent); }
   .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  main { max-width: 1200px; margin: 0 auto; padding: 28px 20px 60px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 26px 20px 60px; }
   .count { color: var(--muted); font-size: 13px; margin-bottom: 18px; text-align: center; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
-    display: flex; flex-direction: column; transition: .18s; position: relative; overflow: hidden;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+    display: flex; flex-direction: column; transition: .18s; position: relative; }
   .card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: var(--accent); }
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
   .card h3 { font-size: 17px; font-weight: 700; }
-  .tag {
-    font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
-    padding: 4px 9px; border-radius: 999px; white-space: nowrap;
-  }
-  .tag.giveaway { background: rgba(34,211,168,0.15); color: var(--accent2); }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .tag { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
   .tag.ai { background: rgba(91,140,255,0.15); color: var(--accent); }
-  .tag.trial { background: rgba(245,166,35,0.15); color: var(--warn); }
-  .tag.cloud { background: rgba(200,120,255,0.15); color: #c878ff; }
+  .tag.dev { background: rgba(34,211,168,0.15); color: var(--accent2); }
+  .tag.games { background: rgba(200,120,255,0.15); color: #c878ff; }
+  .tag.creative { background: rgba(245,166,35,0.15); color: var(--warn); }
+  .tag.hot { background: rgba(255,92,122,0.18); color: var(--hot); }
+  .offer-line { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 8px; }
   .card p.desc { color: var(--muted); font-size: 13.5px; flex-grow: 1; }
-  .offer {
-    margin-top: 12px; font-size: 12.5px; color: var(--text);
-    background: var(--bg2); border-radius: 8px; padding: 8px 10px; border: 1px solid var(--border);
-  }
-  .offer b { color: var(--accent2); }
-  .card a.visit {
-    margin-top: 14px; text-align: center; text-decoration: none; font-weight: 600; font-size: 14px;
-    padding: 10px; border-radius: 10px; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #fff; transition: .15s;
-  }
+  .meta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .meta div { font-size: 12.5px; color: var(--text); background: var(--bg2); border-radius: 8px; padding: 7px 10px; border: 1px solid var(--border); }
+  .meta .who b { color: var(--accent); }
+  .meta .exp b { color: var(--hot); }
+  .card a.visit { margin-top: 14px; text-align: center; text-decoration: none; font-weight: 600; font-size: 14px;
+    padding: 10px; border-radius: 10px; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #fff; transition: .15s; }
   .card a.visit:hover { opacity: .9; }
   .no-results { text-align: center; color: var(--muted); padding: 60px 20px; grid-column: 1/-1; }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 20px 50px; border-top: 1px solid var(--border); }
@@ -101,19 +65,19 @@
 </head>
 <body>
 <header>
-  <h1>🎁 FreeStuff Finder</h1>
-  <p>A hand-curated hub of software giveaways, free trials, free AI tools, and cloud free tiers — sourced from across the internet.</p>
-  <div class="disclaimer">⚠️ Offers change constantly. Details are ~80% accurate as of research date — always confirm terms on the official site before signing up.</div>
+  <h1>🔥 Real Offers Hub</h1>
+  <p>Actual promotions companies are running <b>right now</b> — free Pro plans, months free, weekly game giveaways and student deals. Not generic "free tiers", but real limited-time offers with terms.</p>
+  <div class="disclaimer">⚠️ Offers change fast and often have deadlines. Details are ~80% accurate as of <b>Aug 2026</b> — always confirm on the official site before signing up.</div>
 </header>
 
 <div class="controls">
-  <input id="search" type="text" placeholder="🔍 Search for tools, software, giveaways..." autocomplete="off" />
+  <input id="search" type="text" placeholder="🔍 Search offers, e.g. 'free year', 'student', 'Kiro'..." autocomplete="off" />
   <div class="filters" id="filters">
     <button class="filter-btn active" data-cat="all">All</button>
-    <button class="filter-btn" data-cat="giveaway">🎁 Giveaways</button>
-    <button class="filter-btn" data-cat="ai">🤖 AI Tools</button>
-    <button class="filter-btn" data-cat="trial">⏳ Free Trials</button>
-    <button class="filter-btn" data-cat="cloud">☁️ Cloud Free Tiers</button>
+    <button class="filter-btn" data-cat="ai">🤖 AI</button>
+    <button class="filter-btn" data-cat="dev">💻 Dev Tools</button>
+    <button class="filter-btn" data-cat="creative">🎨 Creative</button>
+    <button class="filter-btn" data-cat="games">🎮 Games</button>
   </div>
 </div>
 
@@ -123,52 +87,105 @@
 </main>
 
 <footer>
-  Built with data from public sources including giveawayoftheday.com, sharewareonsale.com, thetoolsverse.com, datacamp.com, adobe.com, vercel.com &amp; aws.amazon.com.<br/>
-  Not affiliated with any listed service. Verify all offers independently.
+  Compiled from public announcements: kiro.dev, blog.google, engadget.com, github.com/education, jetbrains.com/student, figma.com/education, canva.com/education, store.epicgames.com, perplexity.ai &amp; felloai.com.<br/>
+  Not affiliated with any listed company. Verify every offer &amp; its deadline independently before signing up.
 </footer>
 
 <script>
 const DATA = [
-  // ===== GIVEAWAY SITES =====
-  { name: "Giveaway of the Day", cat: "giveaway", desc: "Offers a different paid Windows/Mac app for free every single day — the license is free only for the day it's featured.", offer: "New free licensed software daily", url: "https://www.giveawayoftheday.com/" },
-  { name: "SharewareOnSale", cat: "giveaway", desc: "Daily free giveaways of paid apps and software for Windows and Android, plus heavily discounted deals.", offer: "Daily free paid apps + deals", url: "https://sharewareonsale.com/" },
-  { name: "Raymond.cc", cat: "giveaway", desc: "Long-running site (since 2008) sharing free applications, giveaways, and tech guides for Windows, Mac & Linux.", offer: "Free apps & giveaway roundups", url: "https://www.raymond.cc/blog/" },
-  { name: "WinningPC", cat: "giveaway", desc: "Daily official giveaways for Windows, Mac, mobile and games, plus verified discount codes from partner brands.", offer: "Official daily giveaways + coupons", url: "https://winningpc.com/" },
+  // ===== AI PROMOTIONS =====
+  { name: "Kiro (by AWS)", cat: "ai", hot: true,
+    offer: "🎓 Kiro Pro FREE for 1 year",
+    desc: "Students who verify their status can use Kiro Pro at no cost for a full year — exactly the kind of 'real offer' promo, straight from the developer.",
+    who: "Verified students (via SheerID)",
+    exp: "Started Mar 16, 2026 — until discontinued",
+    url: "https://kiro.dev/students/" },
+  { name: "Kiro (by AWS)", cat: "ai",
+    offer: "🎁 $20 sign-up bonus + 100+100 welcome requests",
+    desc: "First-time upgraders to any paid Kiro plan (via social login / Builder ID) get a $20 bonus; all users get 100 Spec + 100 Vibe requests in their first 14 days.",
+    who: "New paid upgraders / all new users",
+    exp: "Welcome bonus: first 14 days of usage",
+    url: "https://kiro.dev/blog/new-paid-tier-bonus/" },
+  { name: "Google AI Pro", cat: "ai", hot: true,
+    offer: "🎓 12 months FREE ($200 value)",
+    desc: "US college students get a full year of Google AI Pro (Gemini) at no cost — 4× Gemini limits, 5TB storage, study tools. Students in 140+ other markets get AI Plus free.",
+    who: "Verified US college students (SheerID)",
+    exp: "Relaunched Aug 19 — redeem by Dec 31, 2026",
+    url: "https://gemini.google.com/students" },
+  { name: "Perplexity Pro", cat: "ai",
+    offer: "🎓 1 month of Pro FREE",
+    desc: "Verified students & educators get one free month of Perplexity Pro (Education Pro) before the discounted $10/mo billing begins. Note: the old 24-month referral stack ended May 31, 2026.",
+    who: "Verified students / educators (SheerID)",
+    exp: "Ongoing (referral stacking ended May 2026)",
+    url: "https://www.perplexity.ai/backtoschool" },
 
-  // ===== FREE AI TOOLS =====
-  { name: "ChatGPT (OpenAI)", cat: "ai", desc: "Popular AI chatbot for writing, research, coding and everyday tasks. Free tier handles most common needs.", offer: "Free tier (usage capped daily)", url: "https://chat.openai.com/" },
-  { name: "Claude (Anthropic)", cat: "ai", desc: "Strong reasoning and writing assistant with a large context window on the free plan.", offer: "Free tier w/ ~200K context", url: "https://claude.ai/" },
-  { name: "Google Gemini", cat: "ai", desc: "Google's AI assistant — free with any Google account, one of the most generous free plans available.", offer: "Free with Google account", url: "https://gemini.google.com/" },
-  { name: "Perplexity AI", cat: "ai", desc: "AI answer engine that searches the web and cites its sources. Great for research.", offer: "Unlimited basic searches w/ citations", url: "https://www.perplexity.ai/" },
-  { name: "DeepSeek", cat: "ai", desc: "Capable AI chat with strong coding & math performance and no message caps on the consumer app.", offer: "Unlimited free (no caps)", url: "https://www.deepseek.com/" },
-  { name: "Microsoft Copilot", cat: "ai", desc: "AI assistant integrated with Microsoft's ecosystem and web search, with generous free access.", offer: "Generous free access", url: "https://copilot.microsoft.com/" },
-  { name: "Google AI Studio", cat: "ai", desc: "Free access to the Gemini API for developers to prototype and build AI apps.", offer: "Free API ~15 requests/min", url: "https://aistudio.google.com/" },
-  { name: "Mistral Le Chat", cat: "ai", desc: "Fast European AI chatbot with a genuinely usable free tier for chat and coding.", offer: "Free tier", url: "https://chat.mistral.ai/" },
-  { name: "Qwen (Alibaba)", cat: "ai", desc: "Powerful open-model chatbot with generous free usage for chat, coding and multimodal tasks.", offer: "Generous free access", url: "https://chat.qwen.ai/" },
-  { name: "Microsoft Designer", cat: "ai", desc: "AI-powered graphic design tool for social posts, invites and images.", offer: "Unlimited AI designs (free)", url: "https://designer.microsoft.com/" },
-  { name: "QuillBot", cat: "ai", desc: "AI paraphrasing, grammar and summarizing tool for writers and students.", offer: "Free paraphrasing (word-limited)", url: "https://quillbot.com/" },
-  { name: "ElevenLabs", cat: "ai", desc: "High-quality AI text-to-speech and voice generation with a free monthly character allowance.", offer: "Free monthly character quota", url: "https://elevenlabs.io/" },
-  { name: "Leonardo AI", cat: "ai", desc: "AI image and art generation with a daily free token allowance.", offer: "Daily free image credits", url: "https://leonardo.ai/" },
-  { name: "NotebookLM", cat: "ai", desc: "Google's AI research notebook that grounds answers in your own uploaded documents.", offer: "Free with Google account", url: "https://notebooklm.google.com/" },
-  { name: "Canva (AI features)", cat: "ai", desc: "Design platform with a free plan including AI Magic tools for images and text.", offer: "Free plan w/ AI tools", url: "https://www.canva.com/" },
+  // ===== DEV TOOLS =====
+  { name: "GitHub Copilot", cat: "dev", hot: true,
+    offer: "🎓 Copilot Pro FREE (unlimited)",
+    desc: "Verified students, teachers and open-source maintainers get GitHub Copilot Pro free — unlimited completions and additional models at no cost, right in your editor.",
+    who: "Students, teachers, OSS maintainers",
+    exp: "Ongoing (Copilot Student plan, Mar 2026)",
+    url: "https://github.com/education/students" },
+  { name: "GitHub Student Developer Pack", cat: "dev", hot: true,
+    offer: "🎁 100+ tools & credits bundled FREE",
+    desc: "One verification unlocks dozens of partner offers — free domains, cloud credits, developer tools and courses — all bundled for students.",
+    who: "Verified students",
+    exp: "Ongoing",
+    url: "https://education.github.com/pack" },
+  { name: "JetBrains", cat: "dev",
+    offer: "🎓 Full IDE suite FREE for students",
+    desc: "Free student subscription to all JetBrains IDEs (IntelliJ IDEA Ultimate, PyCharm Pro, WebStorm, etc.). Application is fully automated.",
+    who: "Verified students & teachers",
+    exp: "Ongoing (renew while eligible)",
+    url: "https://jetbrains.com/student" },
 
-  // ===== FREE TRIALS =====
-  { name: "Adobe Creative Cloud", cat: "trial", desc: "Try Photoshop, Illustrator, Premiere, Acrobat and 20+ creative apps plus Firefly AI.", offer: "7-day free trial (20+ apps)", url: "https://www.adobe.com/creativecloud/free-trial-download.html" },
-  { name: "Canva Pro", cat: "trial", desc: "Unlock premium templates, brand kits, background remover and more.", offer: "30-day Pro free trial", url: "https://www.canva.com/pro/" },
-  { name: "Notion Plus", cat: "trial", desc: "All-in-one workspace for notes, docs, wikis and project management. Free personal plan + paid trials.", offer: "Free personal plan + trials", url: "https://www.notion.so/" },
-  { name: "Figma", cat: "trial", desc: "Collaborative interface design tool with a free Starter plan and Pro trials for teams.", offer: "Free Starter plan + Pro trial", url: "https://www.figma.com/" },
-  { name: "Spotify Premium", cat: "trial", desc: "Ad-free music streaming with offline listening.", offer: "Commonly 1–3 month free trial", url: "https://www.spotify.com/premium/" },
-  { name: "YouTube Premium", cat: "trial", desc: "Ad-free YouTube, background play and YouTube Music.", offer: "1-month free trial", url: "https://www.youtube.com/premium" },
+  // ===== CREATIVE =====
+  { name: "Figma for Education", cat: "creative",
+    offer: "🎓 Figma Professional/Enterprise FREE",
+    desc: "Students & educators get free access to Figma & FigJam — higher-ed and bootcamp users get the Professional plan; K-12 gets Enterprise through their school.",
+    who: "Verified students & educators",
+    exp: "Ongoing",
+    url: "https://www.figma.com/education/" },
+  { name: "Canva for Education", cat: "creative",
+    offer: "🏫 Canva Education 100% FREE",
+    desc: "Completely free for K-12 teachers, their students and staff — premium templates, collaboration and design tools at no cost.",
+    who: "K-12 teachers, students & institutions",
+    exp: "Ongoing",
+    url: "https://www.canva.com/education/" },
+  { name: "Adobe Creative Cloud", cat: "creative",
+    offer: "⏳ 7-day free trial (20+ apps)",
+    desc: "Try Photoshop, Illustrator, Premiere, Acrobat + Firefly AI free for 7 days. Plus a common extra 14-day cancellation window for a full refund.",
+    who: "Anyone (new subscribers)",
+    exp: "Ongoing trial",
+    url: "https://www.adobe.com/creativecloud/free-trial-download.html" },
 
-  // ===== CLOUD FREE TIERS =====
-  { name: "Vercel Hobby", cat: "cloud", desc: "Free forever plan for deploying frontend apps and serverless functions — ideal for personal projects.", offer: "Free forever (Hobby plan)", url: "https://vercel.com/pricing" },
-  { name: "AWS Free Tier", cat: "cloud", desc: "New accounts get credits and free service usage to build and experiment on Amazon's cloud.", offer: "Up to $200 credits over 6 months", url: "https://aws.amazon.com/free/" },
-  { name: "Cloudflare", cat: "cloud", desc: "Free CDN, DNS, Workers (serverless) and Pages hosting with a genuinely generous free tier.", offer: "Free CDN, Workers & Pages", url: "https://www.cloudflare.com/plans/" },
-  { name: "Netlify", cat: "cloud", desc: "Free hosting and CI/CD for static sites and serverless functions.", offer: "Free Starter plan", url: "https://www.netlify.com/pricing/" },
-  { name: "Google Cloud (GCP)", cat: "cloud", desc: "Free tier with always-free products plus a credit for new accounts.", offer: "$300 credit + always-free products", url: "https://cloud.google.com/free" },
-  { name: "Microsoft Azure", cat: "cloud", desc: "Free account with popular services free for 12 months plus always-free products and starting credit.", offer: "Credit + 12 months of free services", url: "https://azure.microsoft.com/free/" },
-  { name: "Oracle Cloud", cat: "cloud", desc: "Known for one of the most generous always-free tiers, including free VMs (Always Free resources).", offer: "Always-free VMs & services", url: "https://www.oracle.com/cloud/free/" },
-  { name: "GitHub Copilot (Free)", cat: "cloud", desc: "AI pair programmer with a free tier for individual developers, plus free for verified students/OSS maintainers.", offer: "Free tier + free for students/OSS", url: "https://github.com/features/copilot" }
+  // ===== GAMES =====
+  { name: "Epic Games Store", cat: "games", hot: true,
+    offer: "🎮 A FREE PC game EVERY week",
+    desc: "Epic gives away at least one full PC game free every Thursday (8 AM PT) — yours to keep forever. Aug 2026 freebies alone totaled over $215 in value.",
+    who: "Anyone with a free Epic account",
+    exp: "New games drop weekly (Thursdays)",
+    url: "https://store.epicgames.com/free-games" },
+  { name: "Amazon Prime Gaming", cat: "games",
+    offer: "🎮 Free games & in-game loot monthly",
+    desc: "Prime members get a rotating set of free games and in-game content each month as part of Prime Gaming.",
+    who: "Amazon Prime members",
+    exp: "Refreshes monthly",
+    url: "https://gaming.amazon.com/" },
+
+  // ===== GIVEAWAY / GENERAL SOURCES (keep-an-eye-on) =====
+  { name: "Giveaway of the Day", cat: "creative",
+    offer: "🎁 A paid app FREE every single day",
+    desc: "A different premium Windows/Mac app is given away free each day — the license is valid only for the day it's featured, so check daily.",
+    who: "Anyone",
+    exp: "New giveaway every 24 hours",
+    url: "https://www.giveawayoftheday.com/" },
+  { name: "GetStudentPerks", cat: "dev",
+    offer: "🎓 Hundreds of verified student deals",
+    desc: "A directory of hundreds of verified free plans and student discounts you can claim with a school email — handy hub to find more offers like these.",
+    who: "Students (school email)",
+    exp: "Ongoing directory",
+    url: "https://getstudentperks.com/" }
 ];
 
 const grid = document.getElementById('grid');
@@ -180,25 +197,31 @@ function render() {
   const q = searchEl.value.trim().toLowerCase();
   const items = DATA.filter(d => {
     const matchCat = activeCat === 'all' || d.cat === activeCat;
-    const matchText = !q || (d.name + ' ' + d.desc + ' ' + d.offer).toLowerCase().includes(q);
-    return matchCat && matchText;
+    const hay = (d.name + ' ' + d.desc + ' ' + d.offer + ' ' + d.who + ' ' + d.exp).toLowerCase();
+    return matchCat && (!q || hay.includes(q));
   });
-
-  const tagLabel = { giveaway: '🎁 Giveaway', ai: '🤖 AI Tool', trial: '⏳ Free Trial', cloud: '☁️ Cloud Free' };
+  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative' };
 
   grid.innerHTML = items.length ? items.map(d => `
     <div class="card">
       <div class="card-top">
         <h3>${d.name}</h3>
-        <span class="tag ${d.cat}">${tagLabel[d.cat]}</span>
       </div>
+      <div class="badges">
+        <span class="tag ${d.cat}">${catLabel[d.cat]}</span>
+        ${d.hot ? '<span class="tag hot">🔥 Hot deal</span>' : ''}
+      </div>
+      <div class="offer-line">${d.offer}</div>
       <p class="desc">${d.desc}</p>
-      <div class="offer">✅ <b>${d.offer}</b></div>
-      <a class="visit" href="${d.url}" target="_blank" rel="noopener noreferrer">Visit Site →</a>
+      <div class="meta">
+        <div class="who">👤 <b>Who:</b> ${d.who}</div>
+        <div class="exp">⏰ <b>When:</b> ${d.exp}</div>
+      </div>
+      <a class="visit" href="${d.url}" target="_blank" rel="noopener noreferrer">Claim / Learn More →</a>
     </div>
-  `).join('') : `<div class="no-results">No results found. Try a different search or filter.</div>`;
+  `).join('') : `<div class="no-results">No offers match. Try another search or filter.</div>`;
 
-  countEl.textContent = `Showing ${items.length} of ${DATA.length} offers`;
+  countEl.textContent = `Showing ${items.length} of ${DATA.length} real offers`;
 }
 
 document.getElementById('filters').addEventListener('click', e => {
