@@ -48,6 +48,8 @@
   .tag.dev { background: rgba(34,211,168,0.15); color: var(--accent2); }
   .tag.games { background: rgba(200,120,255,0.15); color: #c878ff; }
   .tag.creative { background: rgba(245,166,35,0.15); color: var(--warn); }
+  .tag.music { background: rgba(255,120,180,0.15); color: #ff78b4; }
+  .tag.cloud { background: rgba(120,200,255,0.15); color: #78c8ff; }
   .tag.hot { background: rgba(255,92,122,0.18); color: var(--hot); }
   .offer-line { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 8px; }
   .card p.desc { color: var(--muted); font-size: 13.5px; flex-grow: 1; }
@@ -78,6 +80,8 @@
     <button class="filter-btn" data-cat="dev">💻 Dev Tools</button>
     <button class="filter-btn" data-cat="creative">🎨 Creative</button>
     <button class="filter-btn" data-cat="games">🎮 Games</button>
+    <button class="filter-btn" data-cat="music">🎵 Music & Media</button>
+    <button class="filter-btn" data-cat="cloud">☁️ Cloud & Hosting</button>
   </div>
 </div>
 
@@ -185,7 +189,87 @@ const DATA = [
     desc: "A directory of hundreds of verified free plans and student discounts you can claim with a school email — handy hub to find more offers like these.",
     who: "Students (school email)",
     exp: "Ongoing directory",
-    url: "https://getstudentperks.com/" }
+    url: "https://getstudentperks.com/" },
+
+  // ===== MUSIC & MEDIA =====
+  { name: "Spotify Premium", cat: "music", hot: true,
+    offer: "🎵 3 months FREE, then paid",
+    desc: "New-to-Premium users get Spotify Premium free for 3 months before regular billing kicks in. Ad-free music, offline downloads. Students also get a separate discounted plan.",
+    who: "Users who've never tried Premium",
+    exp: "Offer ends Sep 23, 2026 (US)",
+    url: "https://www.spotify.com/premium/" },
+  { name: "Spotify + Microsoft Rewards", cat: "music",
+    offer: "🎵 Up to 3 months Premium free",
+    desc: "Redeem Microsoft Rewards points for up to 3 months of Spotify Premium (3-mo for new users; 2-mo for returning users who qualify).",
+    who: "Microsoft Rewards members",
+    exp: "Offer runs through Jan 21, 2028",
+    url: "https://www.microsoft.com/en-us/rewards/spotify-premium-offer" },
+  { name: "Apple Music", cat: "music", hot: true,
+    offer: "🎵 Up to 3 months FREE",
+    desc: "New subscribers get 1 month free; buyers of a new iPhone, iPad, Mac or AirPods get up to 3 months free (redeem within 90 days of device activation).",
+    who: "New subscribers / new Apple device owners",
+    exp: "90 days after device activation",
+    url: "https://www.apple.com/apple-music/" },
+  { name: "Apple Music (Students)", cat: "music",
+    offer: "🎓 1 month free + Apple TV included",
+    desc: "Students get 1 month of Apple Music free, then a discounted $5.99/mo student rate — with bonus access to Apple TV content for a limited time.",
+    who: "Verified higher-ed students",
+    exp: "Ongoing (limited-time Apple TV bonus)",
+    url: "https://music.apple.com/student" },
+  { name: "YouTube Premium", cat: "music",
+    offer: "⏳ 1 month free trial",
+    desc: "Ad-free YouTube, background play, downloads and YouTube Music — free for the first month. Students get a discounted rate after verifying.",
+    who: "New users (student discount available)",
+    exp: "Ongoing trial",
+    url: "https://www.youtube.com/premium" },
+  { name: "Amazon Prime Gaming", cat: "games",
+    offer: "🎮 Free games & in-game loot monthly",
+    desc: "Prime members get a rotating set of free games and in-game content every month via Prime Gaming.",
+    who: "Amazon Prime members",
+    exp: "Refreshes monthly",
+    url: "https://gaming.amazon.com/" },
+
+  // ===== PRODUCTIVITY (student/education) =====
+  { name: "Notion Education Plus", cat: "dev", hot: true,
+    offer: "🎓 Notion Plus plan FREE",
+    desc: "Students & educators with a verified school email upgrade to the Plus plan for free — unlimited file uploads, 30-day version history and unlimited guest sharing.",
+    who: "Verified students & educators (school email)",
+    exp: "Ongoing (single-member workspace)",
+    url: "https://www.notion.com/product/notion-for-education" },
+  { name: "Microsoft 365 Education", cat: "creative",
+    offer: "🎓 Office 365 A1 completely FREE",
+    desc: "Students, educators and staff at accredited institutions get free web versions of Word, Excel, PowerPoint, OneNote & Teams, plus 1 TB of OneDrive storage.",
+    who: "Accredited-institution students & staff",
+    exp: "Ongoing",
+    url: "https://www.microsoft.com/en-us/education/products/office" },
+
+  // ===== VPN =====
+  { name: "Surfshark VPN", cat: "cloud",
+    offer: "🔒 Up to 86% off + 3 extra months free",
+    desc: "Longer plans include several extra months free (a recent promo also bundled a year of the Calm app). Backed by a 30-day money-back guarantee, plus a 7-day free trial on mobile/Windows.",
+    who: "Anyone (student rate also available)",
+    exp: "August 2026 promo",
+    url: "https://surfshark.com/deal/coupon" },
+  { name: "NordVPN", cat: "cloud",
+    offer: "🔒 Up to 74% off + 3 months free",
+    desc: "2-year plans come with a big discount plus 3 extra months free; new users can also try a 30-day money-back period. Extra 15% for students & youth.",
+    who: "Anyone (extra 15% for students)",
+    exp: "Limited-time (Aug 2026)",
+    url: "https://nordvpn.com/" },
+
+  // ===== CLOUD & HOSTING (student credits) =====
+  { name: "Azure for Students", cat: "cloud", hot: true,
+    offer: "🎓 $100 Azure credit — no card needed",
+    desc: "Students get $100 in Azure credit for 12 months plus free services, with no credit card required. Redeemable on its own or via the GitHub Student Pack.",
+    who: "Verified students (personal MS account)",
+    exp: "Renewable yearly while eligible",
+    url: "https://azure.microsoft.com/free/students/" },
+  { name: "Namecheap (Student Pack)", cat: "cloud",
+    offer: "🎓 Free .me domain + SSL for 1 year",
+    desc: "Via the GitHub Student Developer Pack: a free .me domain registration for one year plus a one-year SSL certificate.",
+    who: "Verified students (GitHub Student Pack)",
+    exp: "1-year term per redemption",
+    url: "https://nc.me/" }
 ];
 
 const grid = document.getElementById('grid');
@@ -200,7 +284,7 @@ function render() {
     const hay = (d.name + ' ' + d.desc + ' ' + d.offer + ' ' + d.who + ' ' + d.exp).toLowerCase();
     return matchCat && (!q || hay.includes(q));
   });
-  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative' };
+  const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud' };
 
   grid.innerHTML = items.length ? items.map(d => `
     <div class="card">
