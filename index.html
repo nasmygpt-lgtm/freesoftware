@@ -51,6 +51,7 @@
   .tag.music { background: rgba(255,120,180,0.15); color: #ff78b4; }
   .tag.cloud { background: rgba(120,200,255,0.15); color: #78c8ff; }
   .tag.india { background: rgba(255,153,51,0.18); color: #ff9f45; }
+  .tag.domains { background: rgba(130,240,180,0.15); color: #82f0b4; }
   .tag.hot { background: rgba(255,92,122,0.18); color: var(--hot); }
   .tag.region { background: rgba(148,162,192,0.15); color: var(--muted); }
   .tag.soon { background: rgba(245,166,35,0.2); color: var(--warn); border: 1px solid rgba(245,166,35,0.5); }
@@ -95,6 +96,7 @@
     <button class="filter-btn" data-cat="music">🎵 Music & Media</button>
     <button class="filter-btn" data-cat="cloud">☁️ Cloud & Hosting</button>
     <button class="filter-btn" data-cat="india">🇮🇳 India SIM Offers</button>
+    <button class="filter-btn" data-cat="domains">🌐 Domains & Hosting</button>
   </div>
   <div class="toggles">
     <button class="toggle-btn" id="hotToggle">🔥 Hot deals only</button>
@@ -330,7 +332,57 @@ const DATA = [
     desc: "Vi's Edu+ prepaid plan bundles PhysicsWallah's 'Pi' OTT learning platform (JEE/NEET prep) into a standard recharge — no separate payment for the coursework.",
     who: "Vi prepaid users (students / JEE-NEET aspirants)",
     exp: "Ongoing (plan-dependent)",
-    url: "https://www.myvi.in/prepaid/online-mobile-recharge" }
+    url: "https://www.myvi.in/prepaid/online-mobile-recharge" },
+
+  // ===== 🌐 DOMAINS & HOSTING =====
+  { name: "Namecheap .COM", cat: "domains", hot: true, region: "global",
+    offer: "🌐 .COM from ~$6.49 first year",
+    desc: "New customers can grab a .com for around $6.49 for the first year (limited to one per household). ⚠️ Renews at the standard rate (~$14+/yr) — check the renewal price before buying.",
+    who: "New customers (1 domain per household)",
+    exp: "Ongoing promo (first-year only)",
+    url: "https://www.namecheap.com/domains/domain-pricing.aspx" },
+  { name: "GoDaddy .COM", cat: "domains", region: "global",
+    offer: "🌐 .COM as low as ~$0.01–$1 first year",
+    desc: "GoDaddy runs aggressive first-year .com deals (sometimes a penny). ⚠️ Big catch: renewals jump to ~$22.99/yr — over 5 years it's far pricier than flat-rate registrars. Great for a cheap first year only.",
+    who: "New customers",
+    exp: "Ongoing promo (first-year only)",
+    url: "https://www.godaddy.com/domains" },
+  { name: "Porkbun .COM", cat: "domains", hot: true, region: "global",
+    offer: "🌐 .COM ~$11 — same low price on renewal",
+    desc: "No bait-and-switch: registration and renewal are both around $11, with free WHOIS privacy and SSL. Cheaper long-term than penny-first-year hosts (roughly $55 vs $92 over 5 years for the same domain).",
+    who: "Anyone",
+    exp: "Flat pricing (no promo cliff)",
+    url: "https://porkbun.com/" },
+  { name: "Cloudflare Registrar", cat: "domains", hot: true, region: "global",
+    offer: "🌐 .COM at at-cost (~$10.44/yr, no markup)",
+    desc: "Cloudflare passes domains through at exactly what it pays the registry — no markup on registration OR renewal, and free WHOIS privacy. Requires using Cloudflare's free DNS. One of the cheapest long-term.",
+    who: "Cloudflare users (free plan works)",
+    exp: "At-cost pricing (ongoing)",
+    url: "https://www.cloudflare.com/products/registrar/" },
+  { name: "NameSilo .COM", cat: "domains", region: "global",
+    offer: "🌐 .COM ~$11–17, low with discount program",
+    desc: "Transparent flat pricing (~$17.29 reg & renewal); the free NameSilo Discount Program drops it to ~$11 or lower, and bulk portfolios pay as little as ~$7.75. Includes free WHOIS privacy.",
+    who: "Anyone (discount program is free)",
+    exp: "Flat pricing (ongoing)",
+    url: "https://www.namesilo.com/" },
+  { name: "Hostinger Web Hosting", cat: "domains", hot: true, region: "global",
+    offer: "💻 Hosting from ~$2.99/mo + free domain (yr 1)",
+    desc: "Popular budget host: ~$2.99/mo (on a long term) gets 3 sites, 20GB SSD, free domain and email for the first year. ⚠️ Renews around $10.99/mo — the intro price needs a multi-year commitment.",
+    who: "Anyone (long-term plan for best rate)",
+    exp: "Intro pricing (renews higher)",
+    url: "https://www.hostinger.com/cheap-web-hosting" },
+  { name: "Bluehost Web Hosting", cat: "domains", region: "global",
+    offer: "💻 Hosting under ~$3/mo + free domain (yr 1)",
+    desc: "Beginner-friendly WordPress host: intro rate under $3/mo with free domain (12 or 36-mo terms, redeem within 90 days), free SSL and backups. ⚠️ Renewal prices are notably higher — compare 6-year cost.",
+    who: "Anyone (12/36-month terms)",
+    exp: "Intro pricing (renews higher)",
+    url: "https://www.bluehost.com/pricing/web-hosting" },
+  { name: "Namecheap (Student — free)", cat: "domains", region: "global",
+    offer: "🎓 FREE .me domain + SSL for 1 year",
+    desc: "Via the GitHub Student Developer Pack, students get a free .me domain registration and SSL certificate for a year — genuinely $0, not just a discount.",
+    who: "Verified students (GitHub Student Pack)",
+    exp: "1-year free term per redemption",
+    url: "https://nc.me/" }
 ];
 
 const grid = document.getElementById('grid');
@@ -341,7 +393,7 @@ const hotToggle = document.getElementById('hotToggle');
 let activeCat = 'all';
 let hotOnly = false;
 
-const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud', india: '🇮🇳 India SIM' };
+const catLabel = { ai: '🤖 AI', dev: '💻 Dev', games: '🎮 Games', creative: '🎨 Creative', music: '🎵 Media', cloud: '☁️ Cloud', india: '🇮🇳 India SIM', domains: '🌐 Domain/Host' };
 const regionLabel = { global: '🌍 Global', in: '🇮🇳 India', us: '🇺🇸 US' };
 
 const NOW = new Date();
